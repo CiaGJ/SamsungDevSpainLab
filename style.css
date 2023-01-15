@@ -1,0 +1,22 @@
+:root{
+    --main-background:  #252d37 ;
+    --main-form: #2f3644;
+    --submit-button: #6c63ff;
+    --color-title: #8c9cbc;
+    --boder-color: #c0c2ca;
+    --main-color-font: #8c9cbc;
+}
+
+body{
+    background-color: var(--main-background);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1{
+    color: var(--color-title);
+}
+
+form{
+    background-color: var(--main-form);
+    color: var(--main-color-font);
+}
