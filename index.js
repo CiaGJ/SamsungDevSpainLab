@@ -1,6 +1,7 @@
-function showErrorIcon(id, icon) {
+function showErrorIcon(id, icon,msg) {
     document.getElementById(id).style.borderColor = "red";
     document.getElementById(id).style.borderWidth = "2px";
+    document.getElementById(icon).setAttribute("src","images/error-icon.svg");
     document.getElementById(icon).style.opacity = "1";
 }
 
@@ -19,7 +20,7 @@ function validateForm() {
     var isValid;
     // name validation
     if (a == null || a == "") {
-        showErrorIcon("name", "iconName");
+        showErrorIcon("name", "iconName","nameMsg");
         isValid = false;
     }else{
         showCheckIcon("name", "iconName")
