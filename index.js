@@ -1,3 +1,16 @@
+function showErrorIcon(id, icon) {
+    document.getElementById(id).style.borderColor = "red";
+    document.getElementById(id).style.borderWidth = "2px";
+    document.getElementById(icon).style.opacity = "1";
+}
+
+function showCheckIcon(id, icon) {
+    document.getElementById(id).style.borderColor = "green";
+    document.getElementById(id).style.borderWidth = "2px";
+    document.getElementById(icon).setAttribute("src","images/success-icon.svg");
+    document.getElementById(icon).style.opacity = "1";
+}
+
 function validateForm() {
     var a = document.forms["myForm"]["name"].value;
     var b = document.forms["myForm"]["email"].value;
@@ -6,35 +19,33 @@ function validateForm() {
     var isValid;
     // name validation
     if (a == null || a == "") {
-        document.getElementById("name").style.borderColor = "red";
-        // document.getElementById("name").style.background = "url(images/error-icon.svg) no-repeat scroll 7px 7px";
+        showErrorIcon("name", "iconName");
         isValid = false;
     }else{
-        document.getElementById("name").style.borderColor = "green";
+        showCheckIcon("name", "iconName")
     }   
 
     // email validation
     if(b == null || b == ""){
-        document.getElementById("email").style.borderColor = "red";
+        showErrorIcon("email", "iconEmail");
         isValid = false;
     }else{
-        document.getElementById("email").style.borderColor = "green";
+        showCheckIcon("email", "iconEmail")
 
     }
     // pass validation
     if(c == null || c == ""){  
-        document.getElementById("password").style.borderColor = "red";
+        showErrorIcon("password", "iconPass")
         isValid = false;
     }else{
-        document.getElementById("password").style.borderColor = "green";
-
+        showCheckIcon("password", "iconPass")
     }
     // pass confirmation validation
     if(d == null || d == ""){
-        document.getElementById("pass_confirmation").style.borderColor = "red";
+        showErrorIcon("pass_confirmation", "iconPassConf")
         isValid = false;
     }else{
-        document.getElementById("pass_confirmation").style.borderColor = "green";
+        showCheckIcon("pass_confirmation", "iconPassConf")
     }
 
     if(isValid == false){
