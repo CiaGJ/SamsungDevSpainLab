@@ -1,19 +1,39 @@
 <!DOCTYPE html>
+
 <head lang="es">
     <meta charset="utf-8">
     <title>Formulario Samsung Dev Spain</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
     <script src="index.js"></script>
-    <form action="" method="post">
-        <h1>Create Account</h1>
-        <label for="name">Nombre<input id="name" name="name" type="text" required/></label>
-        <label for="email">Email<input id="email" name="email" type="email" required/></label>
-        <label for="password">Clave<input id="password" name="password" type="password" required/></label>
-        <label for="pass-confirmation">Confirme su clave<input id="pass-confirmation" name="pass-confirmation" type="password" required/></label>
-        <input type="submit" value="Enviar">
-    </form>
+    <div class="form">
+        <form name="myForm" action="" method="post" onsubmit="return validateForm()">
+            <div id="title">
+                <h1>Create Account</h1>
+            </div>
+            <div class="inputField">
+                <label for="name">Nombre<input id="name" name="name" type="text" /><img class="icon"
+                        src="images/error-icon.svg" /></label>
+            </div>
+            <div class="inputField">
+                <label for="email">Email<input id="email" name="email" type="email" /><img class="icon"
+                        src="images/error-icon.svg" /></label>
+            </div>
+            <div class="inputField">
+                <label for="password">Clave<input id="password" name="password" type="password" /><img class="icon"
+                        src="images/error-icon.svg" /></label>
+            </div>
+            <div class="inputField">
+                <label for="pass_confirmation">Confirme su clave<input id="pass_confirmation" name="pass_confirmation"
+                        type="password" /><img class="icon" src="images/error-icon.svg" /></label>
+            </div>
+            <input type="submit" value="ENVIAR">
+        </form>
+    </div>
+
 </body>
+
 </html>
