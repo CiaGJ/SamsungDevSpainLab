@@ -13,7 +13,7 @@ body{
     margin: 0;
     background-color: var(--main-background);
     font-family: Tahoma, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     
@@ -31,7 +31,7 @@ h1{
     width: 60vw;
     max-width: 500px;
     min-width: 300px;
-    height: 80vh;
+    height: 90vh;
     margin: 0 auto;
     padding-bottom: 2em;
     display: flex;
@@ -59,8 +59,10 @@ input{
 
 input[type="submit"] {
     display: block;
+    align-self: center;
     width: 80%;
     margin: 1em auto;
+    margin-top: 10px;
     border: 0;
     height: 2em;
     font-size: 1rem;
@@ -83,4 +85,11 @@ input[type="submit"] {
     left: 90%;
     margin: 0;
     opacity: 0;
+}
+
+.errorMsg{
+    margin-top: -20px;
+    opacity: 0;
+    color: red;
+    font-size: 12px;
 }
