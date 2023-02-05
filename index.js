@@ -26,6 +26,18 @@ function passLenValidation(password){
     return false;
 }
 
+function validateEmail(){
+    var b = document.forms["myForm"]["email"].value;
+    if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(b)){
+        showErrorIcon("email", "iconEmail");
+        showErrorMessage("emailMsg", "Email inválido")
+        return false;
+    }else if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(b)){
+        showCheckIcon("email", "iconEmail","emailMsg")
+    }
+    
+}
+
 function validateForm() {
     var a = document.forms["myForm"]["name"].value;
     var b = document.forms["myForm"]["email"].value;
@@ -50,9 +62,6 @@ function validateForm() {
     if(b == null || b == ""){
         showErrorIcon("email", "iconEmail");
         showErrorMessage("emailMsg", "Rellene este campo")
-        isValid = false;
-    }else if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(b)){
-        showErrorIcon("email", "iconEmail");
         isValid = false;
     }else{
         showCheckIcon("email", "iconEmail","emailMsg")
@@ -89,5 +98,8 @@ function validateForm() {
 
     if(isValid == false){
         return false;
+    } else {
+        alert("La inscripción se ha realizado correctamente. ¡Gracias!")
+        return true;
     }
 }
