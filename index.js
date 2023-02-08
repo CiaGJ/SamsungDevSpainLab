@@ -26,80 +26,88 @@ function passLenValidation(password){
     return false;
 }
 
-function validateEmail(){
-    var b = document.forms["myForm"]["email"].value;
-    if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(b)){
-        showErrorIcon("email", "iconEmail");
-        showErrorMessage("emailMsg", "Email inválido")
-        return false;
-    }else if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(b)){
-        showCheckIcon("email", "iconEmail","emailMsg")
-    }
-    
-}
-
-function validateForm() {
+// name validation
+function validateName(){
     var a = document.forms["myForm"]["name"].value;
-    var b = document.forms["myForm"]["email"].value;
-    var c = document.forms["myForm"]["password"].value;
-    var d = document.forms["myForm"]["pass_confirmation"].value;
-    var isValid;
     const regexName = new RegExp(/\d/gm)
-    // name validation
     if (a == null || a == "") {
         showErrorIcon("name", "iconName");
         showErrorMessage("nameMsg", "Rellene este campo")
-        isValid = false;
+        return false;
     }else if(regexName.test(a)){
         showErrorIcon("name", "iconName");
         showErrorMessage("nameMsg", "Nombre no válido")
-        isValid = false;
+        return false;
     }else{
         showCheckIcon("name", "iconName","nameMsg")
-    }   
+        return true;
+    }  
+}
 
-    // email validation
+// email validation
+function validateEmail(){
+    var b = document.forms["myForm"]["email"].value;
     if(b == null || b == ""){
         showErrorIcon("email", "iconEmail");
         showErrorMessage("emailMsg", "Rellene este campo")
-        isValid = false;
-    }else{
+        return false
+    }else if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(b)){
+        showErrorIcon("email", "iconEmail");
+        showErrorMessage("emailMsg", "Email inválido")
+        return false;
+    }else {
         showCheckIcon("email", "iconEmail","emailMsg")
-
+        return true;
     }
-    // pass validation
+}
+
+//pass validation
+function validatePass(){
+    var c = document.forms["myForm"]["password"].value;
     if(c == null || c == ""){  
         showErrorIcon("password", "iconPass")
         showErrorMessage("passMsg", "Rellene este campo")
-        isValid = false;
+        return false
     }else if(passLenValidation(c)){
         showErrorIcon("password", "iconPass")
         showErrorMessage("passMsg", "Debe tener al menos 8 caracteres")
-        isValid = false;
+        return false
     } else {
         showCheckIcon("password", "iconPass","passMsg")
+        return true
     }
-    // pass confirmation validation
+}
+
+// pass confirmation validation
+function validatePassConf(){
+    var c = document.forms["myForm"]["password"].value;
+    var d = document.forms["myForm"]["pass_confirmation"].value;
     if(d == null || d == ""){
         showErrorIcon("pass_confirmation", "iconPassConf")
         showErrorMessage("passConfMsg", "Rellene este campo")
-        isValid = false;
+        return false
     }else if(passLenValidation(d)){
         showErrorIcon("pass_confirmation", "iconPassConf")
         showErrorMessage("passConfMsg", "Debe tener al menos 8 caracteres")
-        isValid = false;
+        return false
     } else if(c !== d) {
         showErrorIcon("pass_confirmation", "iconPassConf")
         showErrorMessage("passConfMsg", "Las contraseñas no coinciden")
-        isValid = false;
+        return false
     } else {
         showCheckIcon("pass_confirmation", "iconPassConf","passConfMsg")
+        return true
     }
+}
 
-    if(isValid == false){
-        return false;
-    } else {
+// form validation
+function validateForm() {
+    const isValid = [validateName, validateEmail, validatePass, validatePassConf].reduce((valid, f) => f() && valid, true)
+
+    if(isValid){
         alert("La inscripción se ha realizado correctamente. ¡Gracias!")
         return true;
+    } else {
+        return false;
     }
 }
